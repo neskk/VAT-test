@@ -24,32 +24,49 @@ namespace Selenium.Pages
         }
 
         //Finding elements by ID
-        private IWebElement FirstNumberElement => _webDriver.FindElement(By.Id("first-number"));
-        private IWebElement SecondNumberElement => _webDriver.FindElement(By.Id("second-number"));
-        private IWebElement AddButtonElement => _webDriver.FindElement(By.Id("add-button"));
-        private IWebElement ResultElement => _webDriver.FindElement(By.Id("result"));
-        private IWebElement ResetButtonElement => _webDriver.FindElement(By.Id("reset-button"));
+        private IWebElement CountryElement => _webDriver.FindElement(By.CssSelector("select[name='Country']")); // another selector: "select.select150"
 
-        public void EnterFirstNumber(string number)
+        private IWebElement VatElement => _webDriver.FindElement(By.CssSelector("input[name='VAT']"));
+
+        private IReadOnlyCollection<IWebElement> FindPriceElements => _webDriver.FindElements(By.CssSelector("input[name='find']"));
+
+        private IWebElement NetPriceElement => _webDriver.FindElement(By.Id("NetPrice")); // Net
+
+        private IWebElement VatSumElement => _webDriver.FindElement(By.Id("VATsum")); // VAT
+
+        private IWebElement PriceElement => _webDriver.FindElement(By.Id("Price")); // Gross
+
+        private IWebElement ResetButtonElement => _webDriver.FindElement(By.CssSelector("input[name='clear']"));
+
+
+        public void EnterNetPrice(string number)
         {
             //Clear text box
-            FirstNumberElement.Clear();
+            NetPriceElement.Clear();
             //Enter text
-            FirstNumberElement.SendKeys(number);
+            NetPriceElement.SendKeys(number);
         }
 
-        public void EnterSecondNumber(string number)
+        public void EnterVatSum(string number)
         {
             //Clear text box
-            SecondNumberElement.Clear();
+            VatSumElement.Clear();
             //Enter text
-            SecondNumberElement.SendKeys(number);
+            VatSumElement.SendKeys(number);
         }
 
-        public void ClickAdd()
+        public void EnterPrice(string number)
         {
-            //Click the add button
-            AddButtonElement.Click();
+            //Clear text box
+            PriceElement.Clear();
+            //Enter text
+            PriceElement.SendKeys(number);
+        }
+
+        public void ClickReset()
+        {
+            //Click the Reset button
+            ResetButtonElement.Click();
         }
 
         public void EnsureCalculatorIsOpenAndReset()
@@ -70,6 +87,7 @@ namespace Selenium.Pages
             }
         }
 
+        /*
         public string WaitForNonEmptyResult()
         {
             //Wait for the result to be not empty
@@ -77,14 +95,16 @@ namespace Selenium.Pages
                 () => ResultElement.GetAttribute("value"),
                 result => !string.IsNullOrEmpty(result));
         }
+        */
 
         public string WaitForEmptyResult()
         {
             //Wait for the result to be empty
             return WaitUntil(
-                () => ResultElement.GetAttribute("value"),
+                () => NetPriceElement.GetAttribute("value"),
                 result => result == string.Empty);
         }
+
 
         /// <summary>
         /// Helper method to wait until the expected result is available on the UI
@@ -98,7 +118,7 @@ namespace Selenium.Pages
             var wait = new WebDriverWait(_webDriver, TimeSpan.FromSeconds(DefaultWaitInSeconds));
             return wait.Until(driver =>
             {
-                var result = getResult();
+                T? result = getResult();
                 if (!isResultAccepted(result))
                     return default;
 
