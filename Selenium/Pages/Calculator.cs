@@ -87,22 +87,59 @@ namespace Selenium.Pages
             }
         }
 
-        /*
-        public string WaitForNonEmptyResult()
+        public string WaitForNonEmptyNetPrice()
         {
             //Wait for the result to be not empty
             return WaitUntil(
-                () => ResultElement.GetAttribute("value"),
+                () => NetPriceElement.GetAttribute("value"),
                 result => !string.IsNullOrEmpty(result));
         }
-        */
 
-        public string WaitForEmptyResult()
+        public string WaitForNonEmptyVatSum()
         {
-            //Wait for the result to be empty
+            //Wait for the result to be not empty
+            return WaitUntil(
+                () => VatSumElement.GetAttribute("value"),
+                result => !string.IsNullOrEmpty(result));
+        }
+
+        public string WaitForNonEmptyPrice()
+        {
+            //Wait for the result to be not empty
+            return WaitUntil(
+                () => PriceElement.GetAttribute("value"),
+                result => !string.IsNullOrEmpty(result));
+        }
+
+        public string WaitForEmptyNetPrice()
+        {
+            //Wait for the result to be not empty
             return WaitUntil(
                 () => NetPriceElement.GetAttribute("value"),
                 result => result == string.Empty);
+        }
+
+        public string WaitForEmptyVatSum()
+        {
+            //Wait for the result to be not empty
+            return WaitUntil(
+                () => VatSumElement.GetAttribute("value"),
+                result => result == string.Empty);
+        }
+
+        public string WaitForEmptyPrice()
+        {
+            //Wait for the result to be not empty
+            return WaitUntil(
+                () => PriceElement.GetAttribute("value"),
+                result => result == string.Empty);
+        }
+
+        public void WaitForEmptyResult()
+        {
+            WaitForEmptyNetPrice();
+            WaitForEmptyVatSum();
+            WaitForEmptyPrice();
         }
 
 

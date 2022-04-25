@@ -8,6 +8,12 @@ https://medium.com/@amaya30/specflow-selenium-beginner-tutorial-for-functional-a
 
 https://medium.com/@amaya30/specflow-selenium-beginner-tutorial-for-functional-automated-web-testing-part-2-d3a2ba3d7c2
 
+http://www.marcusoft.net/2010/12/using-tags-in-specflow-features.html
+
+https://github.com/SpecFlowOSS/SpecFlow-Examples/tree/master/CalculatorSelenium
+
+https://github.com/spoquality/SpecFlowSeleniumDemo
+
 ---
 
 # VAT calculator
