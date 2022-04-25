@@ -8,11 +8,10 @@
 
   <ItemGroup>
     <Folder Include="Features\" />
-    <Folder Include="Hooks\" />
-    <Folder Include="Steps\" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="FluentAssertions" Version="6.6.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="NUnit" Version="3.13.3" />
     <PackageReference Include="Selenium.Support" Version="4.1.0" />
@@ -21,7 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Selenium\Selenium.csproj" />
+    <ProjectReference Include="..\Selenium\Selenium.csproj" />
   </ItemGroup>
 
 </Project>

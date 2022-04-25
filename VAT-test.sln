@@ -5,7 +5,7 @@ VisualStudioVersion = 17.1.32414.318
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpecFlowTest", "SpecFlowTest\SpecFlowTest.csproj", "{3BD76BF5-D09B-4140-9707-12309F9A363C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Selenium", "..\Selenium\Selenium.csproj", "{B240B981-54FC-4832-9ADA-EDF444413958}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Selenium", "Selenium\Selenium.csproj", "{B240B981-54FC-4832-9ADA-EDF444413958}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{A5D5A07B-E50C-4BC6-9C22-EBA06532A5F1}"
 	ProjectSection(SolutionItems) = preProject
