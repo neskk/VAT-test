@@ -26,7 +26,7 @@ namespace Selenium.Pages
         //Finding elements by ID
         private IWebElement CountryElement => _webDriver.FindElement(By.CssSelector("select[name='Country']")); // another selector: "select.select150"
 
-        private IWebElement VatElement => _webDriver.FindElement(By.CssSelector("input[name='VAT']"));
+        private IReadOnlyCollection<IWebElement> RateElements => _webDriver.FindElements(By.CssSelector("input[name='VAT']"));
 
         private IReadOnlyCollection<IWebElement> FindPriceElements => _webDriver.FindElements(By.CssSelector("input[name='find']"));
 
@@ -38,6 +38,35 @@ namespace Selenium.Pages
 
         private IWebElement ResetButtonElement => _webDriver.FindElement(By.CssSelector("input[name='clear']"));
 
+
+        public void SelectCountry(string country)
+        {
+            var selectOptionList = CountryElement.FindElements(By.TagName("option"));
+
+            foreach (IWebElement option in selectOptionList)
+            {
+                if (option.Text.Equals(country))
+                {
+                    option.Click();
+                    return;
+                }
+            }
+            throw new InvalidSelectorException($"Country option of {country} not found");
+        }
+
+        public void SelectRate(int rate)
+        {
+            foreach (IWebElement el in RateElements)
+            {
+                int elRate = int.Parse(el.GetAttribute("value"));
+                if (elRate == rate)
+                {
+                    _webDriver.FindElement(By.CssSelector($"label[for='VAT_{rate}']")).Click();
+                    return;
+                }
+            }
+            throw new InvalidSelectorException($"VAT rate value of {rate} not found");
+        }
 
         public void EnterNetPrice(string number)
         {
@@ -84,6 +113,21 @@ namespace Selenium.Pages
 
                 //Wait until the result is empty again
                 WaitForEmptyResult();
+            }
+        }
+
+        public bool EnsurePageIsLoaded()
+        {
+            try
+            {
+                var waitForDocumentReady = new WebDriverWait(_webDriver, TimeSpan.FromSeconds(10));
+                waitForDocumentReady.Until((wdriver) =>
+                    (_webDriver as IJavaScriptExecutor).ExecuteScript("return document.readyState").Equals("complete"));
+                return true;
+            }
+            catch (TimeoutException timeoutException)
+            {
+                return false;
             }
         }
 
@@ -153,6 +197,7 @@ namespace Selenium.Pages
         private T WaitUntil<T>(Func<T> getResult, Func<T, bool> isResultAccepted) where T : class
         {
             var wait = new WebDriverWait(_webDriver, TimeSpan.FromSeconds(DefaultWaitInSeconds));
+#pragma warning disable CS8603 // Possible null reference return.
             return wait.Until(driver =>
             {
                 T? result = getResult();
@@ -161,6 +206,7 @@ namespace Selenium.Pages
 
                 return result;
             });
+#pragma warning restore CS8603 // Possible null reference return.
 
         }
     }

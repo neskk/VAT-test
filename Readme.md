@@ -1,20 +1,10 @@
 # SpecFlow + Selenium Test
 
-## Reference / Useful links
+## Usage
 
-https://docs.specflow.org/projects/specflow/en/latest/ui-automation/Selenium-with-Page-Object-Pattern.html
-
-https://medium.com/@amaya30/specflow-selenium-beginner-tutorial-for-functional-automated-web-testing-part-1-bf5c8fe53c3f
-
-https://medium.com/@amaya30/specflow-selenium-beginner-tutorial-for-functional-automated-web-testing-part-2-d3a2ba3d7c2
-
-http://www.marcusoft.net/2010/12/using-tags-in-specflow-features.html
-
-https://github.com/SpecFlowOSS/SpecFlow-Examples/tree/master/CalculatorSelenium
-
-https://github.com/spoquality/SpecFlowSeleniumDemo
-
----
+1. Ensure you download and setup the path for ChromeDriver.
+1. Open the solution in Visual Studio 2022
+2. Execute available tests (Test->Run All Tests)
 
 # VAT calculator
 
@@ -118,3 +108,22 @@ Note: No warning is shown when a non-numeric input is used (all fields)
 - Inserting `999999999` (maximum value) in the Net input leads to truncated output on VAT and Gross inputs.
 	- `199 999 999,8` (VAT)
 	- `1 199 999 998,8` (Gross)
+
+
+---
+
+# Reference / Useful links
+
+https://docs.specflow.org/projects/specflow/en/latest/ui-automation/Selenium-with-Page-Object-Pattern.html
+
+https://medium.com/@amaya30/specflow-selenium-beginner-tutorial-for-functional-automated-web-testing-part-1-bf5c8fe53c3f
+
+https://medium.com/@amaya30/specflow-selenium-beginner-tutorial-for-functional-automated-web-testing-part-2-d3a2ba3d7c2
+
+http://www.marcusoft.net/2010/12/using-tags-in-specflow-features.html
+
+https://github.com/SpecFlowOSS/SpecFlow-Examples/tree/master/CalculatorSelenium
+
+https://github.com/spoquality/SpecFlowSeleniumDemo
+
+https://sites.google.com/chromium.org/driver/downloads
