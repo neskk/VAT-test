@@ -114,6 +114,14 @@ Note: No warning is shown when a non-numeric input is used (all fields)
 
 # Reference / Useful links
 
+[NUnit Documentation](https://docs.nunit.org/)
+
+[SpecFlow Documentation](https://docs.specflow.org/)
+
+[Chrome WebDriver Download](https://sites.google.com/chromium.org/driver/downloads)
+
+https://docs.specflow.org/projects/specflow/en/latest/Bindings/Step-Definitions.html
+
 https://docs.specflow.org/projects/specflow/en/latest/ui-automation/Selenium-with-Page-Object-Pattern.html
 
 https://medium.com/@amaya30/specflow-selenium-beginner-tutorial-for-functional-automated-web-testing-part-1-bf5c8fe53c3f
@@ -126,4 +134,4 @@ https://github.com/SpecFlowOSS/SpecFlow-Examples/tree/master/CalculatorSelenium
 
 https://github.com/spoquality/SpecFlowSeleniumDemo
 
-https://sites.google.com/chromium.org/driver/downloads
+

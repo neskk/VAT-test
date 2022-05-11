@@ -22,7 +22,7 @@ namespace SpecFlowTest.Steps
             _calculatorPageObject = new CalculatorPageObject(browserDriver.Current);
         }
 
-        [Given("Navigate to VAT calculator")]
+        [Given("I Navigate to VAT calculator")]
         public void GivenNavigateToVATCalculator()
         {
             _calculatorPageObject.EnsureCalculatorIsOpenAndReset();
@@ -42,24 +42,24 @@ namespace SpecFlowTest.Steps
         }
 
         [Given("the net price is (.*)")]
-        public void GivenTheNetPriceIs(float number)
+        public void GivenTheNetPriceIs(string number)
         {
             //delegate to Page Object
-            _calculatorPageObject.EnterNetPrice(number.ToString());
+            _calculatorPageObject.EnterNetPrice(number);
         }
 
         [Given("the vat sum is (.*)")]
-        public void GivenTheVatSumIs(float number)
+        public void GivenTheVatSumIs(string number)
         {
             //delegate to Page Object
-            _calculatorPageObject.EnterVatSum(number.ToString());
+            _calculatorPageObject.EnterVatSum(number);
         }
 
         [Given("the price is (.*)")]
-        public void GivenThePriceIs(float number)
+        public void GivenThePriceIs(string number)
         {
             //delegate to Page Object
-            _calculatorPageObject.EnterPrice(number.ToString());
+            _calculatorPageObject.EnterPrice(number);
         }
 
         /*

@@ -10,43 +10,34 @@
 
 @Calculator
 
-
-Scenario: Basic
+Background: United Kingdom VAT20
 	//Given Navigate to VAT calculator
 	Given Selected the United Kingdom country
 	Given Selected the rate of 20%
+
+
+Scenario: Basic
 	Given the net price is 10.00
 	Then the vat sum should be 2.00
 	And the price should be 12.00
 
 Scenario: Basic 2
-	//Given Navigate to VAT calculator
-	Given Selected the United Kingdom country
-	Given Selected the rate of 20%
+
 	Given the net price is 9.99
 	Then the vat sum should be 2.00
 	And the price should be 11.99
 
 Scenario: Precision
-	//Given Navigate to VAT calculator
-	Given Selected the United Kingdom country
-	Given Selected the rate of 20%
 	Given the net price is 9.999
 	Then the vat sum should be 2.00
 	And the price should be 12.00
 
 Scenario: Negative Value
-	//Given Navigate to VAT calculator
-	Given Selected the United Kingdom country
-	Given Selected the rate of 20%
 	Given the net price is -10
 	Then the vat sum should be -2.00
 	And the price should be -12.00
 
 Scenario: Text Value
-	//Given Navigate to VAT calculator
-	Given Selected the United Kingdom country
-	Given Selected the rate of 20%
 	Given the net price is test
 	Then the vat sum should not be a number
 	And the price should not be a number
