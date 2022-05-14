@@ -22,54 +22,45 @@ namespace SpecFlowTest.Steps
             _calculatorPageObject = new CalculatorPageObject(browserDriver.Current);
         }
 
-        [Given("I Navigate to VAT calculator")]
-        public void GivenNavigateToVATCalculator()
+        [Given("I navigate to VAT calculator")]
+        public void GivenINavigateToVATCalculator()
         {
             _calculatorPageObject.EnsureCalculatorIsOpenAndReset();
             //throw new PendingStepException();
         }
 
-        [Given("Selected the (.*) country")]
-        public void GivenSelectedTheCountry(string country)
+        [Given("I select the (.*) country")]
+        public void GivenISelectTheCountry(string country)
         {
             _calculatorPageObject.SelectCountry(country);
         }
 
-        [Given("Selected the rate of (.*)%")]
-        public void GivenSelectedTheRateOf(int rate)
+        [Given("I select the rate of (.*)%")]
+        public void GivenISelectTheRateOf(int rate)
         {
             _calculatorPageObject.SelectRate(rate);
         }
 
-        [Given("the net price is (.*)")]
-        public void GivenTheNetPriceIs(string number)
+        [When("the net price is (.*)")]
+        public void WhenTheNetPriceIs(string number)
         {
             //delegate to Page Object
             _calculatorPageObject.EnterNetPrice(number);
         }
 
-        [Given("the vat sum is (.*)")]
-        public void GivenTheVatSumIs(string number)
+        [When("the vat sum is (.*)")]
+        public void WhenTheVatSumIs(string number)
         {
             //delegate to Page Object
             _calculatorPageObject.EnterVatSum(number);
         }
 
-        [Given("the price is (.*)")]
-        public void GivenThePriceIs(string number)
+        [When("the price is (.*)")]
+        public void WhenThePriceIs(string number)
         {
             //delegate to Page Object
             _calculatorPageObject.EnterPrice(number);
         }
-
-        /*
-        [When("the two numbers are added")]
-        public void WhenTheTwoNumbersAreAdded()
-        {
-            //delegate to Page Object
-            _calculatorPageObject.ClickAdd();
-        }
-        */
 
         [Then("the net price should be (.*)")]
         public void ThenTheNetPriceShouldBe(float expectedResult)
@@ -104,7 +95,6 @@ namespace SpecFlowTest.Steps
             var actualResult = _calculatorPageObject.WaitForNonEmptyNetPrice();
             actualResult.Should().Be("NaN");
         }
-
 
         [Then(@"the vat sum should not be a number")]
         public void ThenTheVatSumShouldNotBeANumber()
