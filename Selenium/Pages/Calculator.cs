@@ -23,16 +23,22 @@ namespace Selenium.Pages
             _webDriver = webDriver;
         }
 
-        //Finding elements by ID
+        //Finding elements
         private IWebElement CountryElement => _webDriver.FindElement(By.CssSelector("select[name='Country']")); // another selector: "select.select150"
 
         private IReadOnlyCollection<IWebElement> RateElements => _webDriver.FindElements(By.CssSelector("input[name='VAT']"));
 
         private IReadOnlyCollection<IWebElement> FindPriceElements => _webDriver.FindElements(By.CssSelector("input[name='find']"));
 
+        private IWebElement FindNetPriceElement => _webDriver.FindElement(By.CssSelector("label[for='F1']"));
+
         private IWebElement NetPriceElement => _webDriver.FindElement(By.Id("NetPrice")); // Net
 
+        private IWebElement FindVatSumElement => _webDriver.FindElement(By.CssSelector("label[for='F2']"));
+
         private IWebElement VatSumElement => _webDriver.FindElement(By.Id("VATsum")); // VAT
+
+        private IWebElement FindPriceElement => _webDriver.FindElement(By.CssSelector("label[for='F3']"));
 
         private IWebElement PriceElement => _webDriver.FindElement(By.Id("Price")); // Gross
 
@@ -70,6 +76,8 @@ namespace Selenium.Pages
 
         public void EnterNetPrice(string number)
         {
+            //Select option
+            FindNetPriceElement.Click();
             //Clear text box
             NetPriceElement.Clear();
             //Enter text
@@ -78,6 +86,8 @@ namespace Selenium.Pages
 
         public void EnterVatSum(string number)
         {
+            //Select option
+            FindVatSumElement.Click();
             //Clear text box
             VatSumElement.Clear();
             //Enter text
@@ -86,6 +96,8 @@ namespace Selenium.Pages
 
         public void EnterPrice(string number)
         {
+            //Select option
+            FindPriceElement.Click();
             //Clear text box
             PriceElement.Clear();
             //Enter text

@@ -9,32 +9,52 @@
 
 
 Background: United Kingdom VAT20
-	# Given I navigate to VAT calculator
-	Given I select the United Kingdom country
-	Given I select the rate of 20%
+  #Given I navigate to VAT calculator
+  Given I select the United Kingdom country
+  Given I select the rate of 20%
 
 @Calculator
-Scenario: Basic
-	When the net price is 10.00
-	Then the vat sum should be 2.00
-	And the price should be 12.00
+Scenario Outline: net price
+  When the net price is <net>
+  Then the vat sum should be <vatsum>
+  And the price should be <price>
 
-Scenario: Basic 2
-	When the net price is 9.99
-	Then the vat sum should be 2.00
-	And the price should be 11.99
+  Examples:
+    | net   | vatsum | price |
+    | 10.00 |   2.00 | 12.00 |
+    |  9.99 |   2.00 | 11.99 |
+
+Scenario Outline: vat sum
+  When the vat sum is <vatsum>
+  Then the net price should be <net>
+  And the price should be <price>
+
+  Examples:
+    | net   | vatsum | price |
+    | 10.00 |   2.00 | 12.00 |
+    |  9.99 |   2.00 | 11.99 |
+
+Scenario Outline: price
+  When the price is <price>
+  Then the net price should be <net>
+  And the vat sum should be <vatsum>
+
+  Examples:
+    | net   | vatsum | price |
+    | 10.00 |   2.00 | 12.00 |
+    |  9.99 |   2.00 | 11.99 |
 
 Scenario: Precision
-	When the net price is 9.999
-	Then the vat sum should be 2.00
-	And the price should be 12.00
+  When the net price is 9.999
+  Then the vat sum should be 2.00
+  And the price should be 12.00
 
 Scenario: Negative Value
-	When the net price is -10
-	Then the vat sum should be -2.00
-	And the price should be -12.00
+  When the net price is -10
+  Then the vat sum should be -2.00
+  And the price should be -12.00
 
 Scenario: Text Value
-	When the net price is test
-	Then the vat sum should not be a number
-	And the price should not be a number
+  When the net price is test
+  Then the vat sum should not be a number
+  And the price should not be a number
