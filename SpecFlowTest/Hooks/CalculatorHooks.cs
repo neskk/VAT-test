@@ -17,6 +17,8 @@ namespace SpecFlowTest.Hooks
         public static void BeforeScenario(BrowserDriver browserDriver)
         {
             var calculatorPageObject = new CalculatorPageObject(browserDriver.Current);
+
+            calculatorPageObject.EnsurePageIsLoaded();
             calculatorPageObject.EnsureCalculatorIsOpenAndReset();
         }
     }

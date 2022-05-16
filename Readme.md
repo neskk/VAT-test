@@ -135,3 +135,12 @@ https://github.com/SpecFlowOSS/SpecFlow-Examples/tree/master/CalculatorSelenium
 https://github.com/spoquality/SpecFlowSeleniumDemo
 
 
+## Ideas
+
+  Given the following country rates
+    | country          | rate |
+    | United Kingdom   |   20 |
+    | United Kingdom   |    5 |
+    | Portugal         |   23 |
+    | Portugal         |   13 |
+    | Portugal         |    6 |
