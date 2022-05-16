@@ -108,39 +108,36 @@ Note: No warning is shown when a non-numeric input is used (all fields)
 - Inserting `999999999` (maximum value) in the Net input leads to truncated output on VAT and Gross inputs.
 	- `199 999 999,8` (VAT)
 	- `1 199 999 998,8` (Gross)
-
+- When testing the input of VAT values, we can not get the prices ending in `.99`. E.g. `9.99` price w/o VAT, equates to `2.00` in VAT sum, but when inserting `2.00` VAT, we will never get `9.99` in price and instead we get `10.00`.
 
 ---
 
 # Reference / Useful links
 
-[NUnit Documentation](https://docs.nunit.org/)
+- [NUnit Documentation](https://docs.nunit.org/)
+- [SpecFlow Documentation](https://docs.specflow.org/)
+- [Cucumber Gherkin Documentation](https://cucumber.io/docs/gherkin/reference/)
+- [Selenium Documentation](https://www.selenium.dev/documentation/webdriver/)
+- [Chrome WebDriver Download](https://sites.google.com/chromium.org/driver/downloads)
 
-[SpecFlow Documentation](https://docs.specflow.org/)
+## Advanced topics
 
-[Chrome WebDriver Download](https://sites.google.com/chromium.org/driver/downloads)
+- [Selenium Finders](https://www.selenium.dev/documentation/webdriver/elements/finders/)
+- [Step Definitions](https://docs.specflow.org/projects/specflow/en/latest/Bindings/Step-Definitions.html)
 
-https://docs.specflow.org/projects/specflow/en/latest/Bindings/Step-Definitions.html
+- [SpecFlow Examples](https://docs.specflow.org/en/latest/Examples.html)
 
-https://docs.specflow.org/projects/specflow/en/latest/ui-automation/Selenium-with-Page-Object-Pattern.html
+## Example projects
 
-https://medium.com/@amaya30/specflow-selenium-beginner-tutorial-for-functional-automated-web-testing-part-1-bf5c8fe53c3f
-
-https://medium.com/@amaya30/specflow-selenium-beginner-tutorial-for-functional-automated-web-testing-part-2-d3a2ba3d7c2
-
-http://www.marcusoft.net/2010/12/using-tags-in-specflow-features.html
-
-https://github.com/SpecFlowOSS/SpecFlow-Examples/tree/master/CalculatorSelenium
-
-https://github.com/spoquality/SpecFlowSeleniumDemo
+- [SpecFlowOSS/CalculatorSelenium](https://github.com/SpecFlowOSS/SpecFlow-Examples/tree/master/CalculatorSelenium)
+	- Explained in [Selenium with Page Object Pattern](https://docs.specflow.org/projects/specflow/en/latest/ui-automation/Selenium-with-Page-Object-Pattern.html)
+- [spoquality/SpecFlowSeleniumDemo](https://github.com/spoquality/SpecFlowSeleniumDemo)
+	- **Beginner tutorial for functional automated web testing**
+		[Part 1](https://medium.com/@amaya30/specflow-selenium-beginner-tutorial-for-functional-automated-web-testing-part-1-bf5c8fe53c3f)
+		[Part 2](https://medium.com/@amaya30/specflow-selenium-beginner-tutorial-for-functional-automated-web-testing-part-2-d3a2ba3d7c2)
 
 
-## Ideas
+# TODO
 
-  Given the following country rates
-    | country          | rate |
-    | United Kingdom   |   20 |
-    | United Kingdom   |    5 |
-    | Portugal         |   23 |
-    | Portugal         |   13 |
-    | Portugal         |    6 |
+- Add support to multiple browsers.
+- At runtime, compute the expected output values, based on the inputs for each scenario. This way we can have more generic tests and cover all the possibilities.

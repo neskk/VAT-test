@@ -36,6 +36,21 @@ Scenario Outline: vat sum
     | Portugal         |   13 | 10.00 |   1.30 | 11.30 |
     | Portugal         |    6 | 10.00 |   0.60 | 10.60 |
 
+Scenario Outline: rounding vat sum
+  Given I select the <country> country
+  Given I select the rate of <rate>%
+  When the vat sum is <vatsum>
+  Then the net price should be <net>
+  And the price should be <price>
+
+  Examples:
+    | country          | rate | net   | vatsum | price |
+    | United Kingdom   |   20 |  9.99 |  1.999 | 11.99 |
+    | United Kingdom   |    5 |  9.98 |  0.499 | 10.48 |
+    | Portugal         |   23 | 10.00 |  2.299 | 12.29 |
+    | Portugal         |   13 |  9.99 |  1.299 | 11.29 |
+    | Portugal         |    6 |  9.98 |  0.599 | 10.58 |
+
 Scenario Outline: price
   Given I select the <country> country
   Given I select the rate of <rate>%
