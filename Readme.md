@@ -124,8 +124,8 @@ Note: No warning is shown when a non-numeric input is used (all fields)
 
 - [Selenium Finders](https://www.selenium.dev/documentation/webdriver/elements/finders/)
 - [Step Definitions](https://docs.specflow.org/projects/specflow/en/latest/Bindings/Step-Definitions.html)
-
 - [SpecFlow Examples](https://docs.specflow.org/en/latest/Examples.html)
+- [WebDriver Factory](https://thefriendlytester.co.uk/2014/02/webdriver-factory.html)
 
 ## Example projects
 
@@ -139,5 +139,6 @@ Note: No warning is shown when a non-numeric input is used (all fields)
 
 # TODO
 
+- Add test scenario to validate reset button.
 - Add support to multiple browsers.
 - At runtime, compute the expected output values, based on the inputs for each scenario. This way we can have more generic tests and cover all the possibilities.
